@@ -144,64 +144,86 @@ const getAppByPat = (req, res) => {
   });
 };
 const getAppBydoc = (req, res) => {
-    let doctor_id = req.token.doctor_id;
-    console.log(doctor_id);
-    const query = `SELECT * from appointments INNER JOIN patients ON appointments.patient_id=patients.patient_id
+  let doctor_id = req.token.doctor_id;
+  console.log(doctor_id);
+  const query = `SELECT * from appointments INNER JOIN patients ON appointments.patient_id=patients.patient_id
        WHERE appointments.doctor_id=${doctor_id}`;
-    appointment.query(query, (err, result) => {
-      if (!result.length) {
-        return res.status(500).json({
-          success: false,
-          message: `not found any appointments`,
-        });
-      } else if (err) {
-        return res.status(404).json({
-          success: false,
-          message: `Server Error`,
-          err: err,
-        });
-      }
-      return res.status(201).json({
-        success: true,
-        result: result,
+  appointment.query(query, (err, result) => {
+    if (!result.length) {
+      return res.status(500).json({
+        success: false,
+        message: `not found any appointments`,
       });
+    } else if (err) {
+      return res.status(404).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    }
+    return res.status(201).json({
+      success: true,
+      result: result,
     });
-  };
-  
-  
-  const SearchDoctor = (req, res) => {
-    const firstName = req.body.name || "";
-    const mobile = req.body.mobile || "";
-    const Doctor_Scout_from = req.body.Doctor_Scout_from || 0;
-    const Doctor_Scout_to = req.body.Doctor_Scout_to || 1000;
-  
-    const query = `SELECT * FROM doctors 
+  });
+};
+
+const SearchDoctor = (req, res) => {
+  const firstName = req.body.name || "";
+  const mobile = req.body.mobile || "";
+  const Doctor_Scout_from = req.body.Doctor_Scout_from || 0;
+  const Doctor_Scout_to = req.body.Doctor_Scout_to || 1000;
+
+  const query = `SELECT * FROM doctors 
           WHERE firstName LIKE "%${firstName}"  
           AND mobile LIKE "${mobile}%" 
           AND Doctor_Scout BETWEEN ${Doctor_Scout_from} AND ${Doctor_Scout_to}
          `;
-  
-    appointment.query(query, (err, result) => {
-      if (err) {
-        return res.status(500).json({
-          success: false,
-          message: `Server Error`,
-          err: err,
-        });
-      } else if (!result.length) {
-        return res.status(404).json({
-          success: false,
-          message: `not found any Doctor`,
-        });
-      }
-  
-      return res.status(200).json({
+
+  appointment.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    } else if (!result.length) {
+      return res.status(404).json({
+        success: false,
+        message: `not found any Doctor`,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "filtered Doctors",
+      result: result,
+    });
+  });
+};
+const deletApp = (req, res) => {
+  const appointments_id = req.params.appointments_id;
+  const query = `DELETE from  appointments where appointments.appointments_id=${appointments_id} `;
+  appointment.query(query, (err, result) => {
+    if (!result.affectedRows) {
+      return res.status(404).json({
+        success: false,
+        message: `no appointment`,
+      });
+    } else if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    }
+    return res.status(200).json({
         success: true,
-        message: "filtered Doctors",
+        message: "deleted",
         result: result,
       });
-    });
-  };
+  });
+};
 
 module.exports = {
   createAppointments,
@@ -210,4 +232,5 @@ module.exports = {
   getAppByPat,
   getAppBydoc,
   SearchDoctor,
+  deletApp,
 };
