@@ -7,6 +7,7 @@ const {
   getAppBydoc,
   SearchDoctor,
   deletApp,
+  updateApp
 } = require("../controllers/appointment");
 const { authentication } = require("../middlewares/authentication");
 
@@ -19,5 +20,6 @@ appointmentsRouter.get("/pat", authentication, getAppByPat);
 appointmentsRouter.get("/doc", authentication, getAppBydoc);
 appointmentsRouter.get("/search", SearchDoctor);
 appointmentsRouter.delete("/:appointments_id", authentication,deletApp);
+appointmentsRouter.put("/:appointments_id", authentication,updateApp);
 
 module.exports = appointmentsRouter;
