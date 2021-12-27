@@ -1,6 +1,5 @@
 const doctor = require("../../db/db");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const createNewDoctor = async (req, res) => {
   let {
@@ -14,6 +13,7 @@ const createNewDoctor = async (req, res) => {
     descriptionn,
     address
   } = req.body;
+  console.log(req.body);
   pass = await bcrypt.hash(pass, 10);
   email = email.toLowerCase();
   const query = `INSERT INTO doctors
@@ -22,6 +22,8 @@ const createNewDoctor = async (req, res) => {
   data = [firstName, lastName, email, pass , mobile ,img,Doctor_Scout,descriptionn,address];
 
   doctor.query(query, data, (err, result) => {
+    console.log(result,"result");
+    console.log(err,"err");
     if (result) {
       res.status(201).json({
         success: true,
