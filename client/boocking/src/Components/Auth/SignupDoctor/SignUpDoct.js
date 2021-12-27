@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./doctor.css";
 import { storage } from "../../Firbase/Firebase";
 import axios from "axios";
+import { useNavigate  } from "react-router-dom";
 
 function SignUpDoct() {
+  const history = useNavigate()
   const [img, setImg] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -30,7 +32,7 @@ function SignUpDoct() {
     axios
     .post("http://localhost:5000/signDoc", data )
     .then((result)=>{
-      console.log(result);
+      history("/LoginDoctor")
     }).catch(err=>console.log(err))
   }
   const addMainIm = (e) => {

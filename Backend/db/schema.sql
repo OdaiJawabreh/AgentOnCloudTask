@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS doctors (
     email VARCHAR(255) NOT NULL UNIQUE,
     pass VARCHAR(255) NOT NULL,
     mobile VARCHAR(45),
-    img VARCHAR(45),
+    img VARCHAR(255),
     Doctor_Scout INT NOT NULL,
     is_Available TINYINT DEFAULT 1,
     descriptionn VARCHAR(255) ,

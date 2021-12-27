@@ -8,7 +8,7 @@ function SignSelect() {
     if (e.target.value == "doctor") {
       history("/doctor");
     } else {
-      history("/patient");
+      history("/pat");
     }
   };
   return (
