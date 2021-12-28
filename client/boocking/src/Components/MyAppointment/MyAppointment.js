@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import axios from "axios";
-function MyAppointment() {
-  let count = 1;
+import { RiDeleteBin6Line } from "react-icons/ri";
 
+function MyAppointment() {
   const hashToken = localStorage.getItem("token1");
   const [appts, setAppts] = useState("");
   const [message, setMessage] = useState("");
@@ -14,8 +14,21 @@ function MyAppointment() {
       })
       .then((result) => {
         console.log(result.data.result);
-        console.log(typeof(result.data.result[0].statuss));
+        console.log(typeof result.data.result[0].statuss);
         setAppts(result.data.result);
+      });
+  }
+  function deleteApp(id) {
+    axios
+      .delete(`http://localhost:5000/app/${id}`, {
+        headers: { Authorization: `Bearer ${hashToken}` },
+      })
+      .then((result) => {
+        setAppts(
+          appts.filter((elem) => {
+            return elem.appointments_id !== id;
+          })
+        );
       });
   }
   useEffect(() => {
@@ -37,6 +50,7 @@ function MyAppointment() {
                 <th style={{ textAlign: "center" }}>Address</th>
                 <th style={{ textAlign: "center" }}>Mobile Number</th>
                 <th style={{ textAlign: "center" }}>Status</th>
+                <th style={{ textAlign: "center" }}>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -58,12 +72,28 @@ function MyAppointment() {
                       <td style={{ textAlign: "center" }}>{elem.address}</td>
                       <td style={{ textAlign: "center" }}>{elem.mobile}</td>
                       <td style={{ textAlign: "center" }}>
-                        {elem.statuss===1 ? (
+                        {elem.statuss === 1 ? (
                           <span style={{ color: "green" }}>approved</span>
                         ) : elem.statuss === 2 ? (
                           <span style={{ color: "red" }}>Rejected</span>
                         ) : (
                           <span>Pending</span>
+                        )}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {elem.statuss === 0 ? (
+                          <RiDeleteBin6Line
+                            style={{
+                              color: "red",
+                              fontSize: "20px",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              deleteApp(elem.appointments_id);
+                            }}
+                          ></RiDeleteBin6Line>
+                        ) : (
+                          ""
                         )}
                       </td>
                     </tr>

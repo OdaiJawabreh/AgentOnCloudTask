@@ -218,6 +218,7 @@ const SearchDoctor = (req, res) => {
   });
 };
 const deletApp = (req, res) => {
+  console.log( Number(req.params.appointments_id));
   const appointments_id = Number(req.params.appointments_id);
   const query = `DELETE from  appointments where appointments.appointments_id=${appointments_id} `;
   appointment.query(query, (err, result) => {
