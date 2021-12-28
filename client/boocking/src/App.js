@@ -8,6 +8,7 @@ import LoginPat from "./Components/Auth/Login/LoginPat";
 import SignUpPat from "./Components/Auth/SignupPataint/SignUpPat";
 import Nav from "./Components/Nav/Nav";
 import SearchResult from "./Components/SearchResulr/SearchResult";
+import Boocking from "./Components/Boocking/Boocking";
 
 function App() {
  
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/loginDoctor" element={<LoginDoctor />} />
           <Route exact path="/LoginPat" element={<LoginPat />} />
           <Route exact path="/searchResult" element={<SearchResult />} />
+          <Route exact path="/boocking/:id" element={<Boocking />} />
         </Routes>
       
     

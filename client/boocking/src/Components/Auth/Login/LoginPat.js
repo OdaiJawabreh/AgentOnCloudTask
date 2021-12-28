@@ -22,6 +22,8 @@ function LoginPat() {
    .then((result)=>{
      let user = jwt(result.data.token)
     localStorage.setItem("token", JSON.stringify(user));
+    localStorage.setItem("token1",result.data.token);
+
        history("/")
    }).catch((err)=>{
      console.log(err);

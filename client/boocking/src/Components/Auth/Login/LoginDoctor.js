@@ -21,6 +21,7 @@ function LoginDoctor() {
     axios.post("http://localhost:5000/login/doctor", data).then((result) => {
       let user = jwt(result.data.token)
       localStorage.setItem("token", JSON.stringify(user));
+      localStorage.setItem("token1",result.data.token);
       history("/");
     }).catch((err)=>{
       setMessage("Plese check your email ")
