@@ -1,20 +1,23 @@
-import React, { useState ,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
 function Boocking() {
-    const history = useNavigate();
-  const token = JSON.parse(localStorage.getItem("token"));
- console.log(token);
+  const history = useNavigate();
+  // const [value,setValue] = useState(false)
+  let token = ""
+
+  
   useEffect(() => {
+    token = JSON.parse(localStorage.getItem("token"))
     if (!token) {
-        swal("Please Login Fierst").then((value) => {
-            history("/LoginSelect");
-        });
-        
-      }
+      swal("Please Login Fierst").then((value) => {
+        console.log(value, "value");
+        value && history("/LoginSelect");
+      });
+    }
   }, []);
 
   const hashToken = localStorage.getItem("token1");
@@ -35,8 +38,10 @@ function Boocking() {
         headers: { Authorization: `Bearer ${hashToken}` },
       })
       .then((result) => {
-        swal("your appointmebt has been subnited you can check the status in youre appointments").then((value) => {
-            history("/");
+        swal(
+          "your appointmebt has been subnited you can check the status in youre appointments"
+        ).then((value) => {
+          history("/");
         });
       });
   }

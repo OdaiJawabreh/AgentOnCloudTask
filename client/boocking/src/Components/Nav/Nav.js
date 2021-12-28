@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useLocation } from "react-router";
 import { setSearches } from "../../actions/search";
-import { Button, Navbar, Container, Form, FormControl } from "react-bootstrap";
+import { Button, Navbar, Container, Form, FormControl  } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Nav() {
   const dispatch = useDispatch();
@@ -136,7 +137,9 @@ function Nav() {
             <Container>
               <Form className="d-flex">
                 <Navbar.Brand href="/">SYT</Navbar.Brand>
-                <Navbar.Brand href="#">MyAppointment</Navbar.Brand>
+                <Link to='/MyAppointment'>MyAppointment</Link>
+                {/* <Link to='/MyAppointment'>MyAppointment</Link> */}
+                {/* <Navbar.Brand href="/MyAppointment">MyAppointment</Navbar.Brand> */}
 
                 <FormControl
                   type="search"

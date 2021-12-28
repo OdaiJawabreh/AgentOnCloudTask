@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, {  useState } from "react";
 import SignSelect from "./Components/SignSelect/SignSelect";
 import LoginSelect from "./Components/LoginSelect/LoginSelect";
@@ -9,7 +10,8 @@ import SignUpPat from "./Components/Auth/SignupPataint/SignUpPat";
 import Nav from "./Components/Nav/Nav";
 import SearchResult from "./Components/SearchResulr/SearchResult";
 import Boocking from "./Components/Boocking/Boocking";
-
+import MainPage from "./Components/MainPage/MainPage";
+import MyAppointment from "./Components/MyAppointment/MyAppointment";
 function App() {
  
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route exact path="/LoginPat" element={<LoginPat />} />
           <Route exact path="/searchResult" element={<SearchResult />} />
           <Route exact path="/boocking/:id" element={<Boocking />} />
+          <Route exact path="/" element={<MainPage />} />
+          <Route exact path="/MyAppointment" element={<MyAppointment />} />
         </Routes>
       
     

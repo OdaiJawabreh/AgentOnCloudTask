@@ -7,7 +7,8 @@ const {
   getAppBydoc,
   SearchDoctor,
   deletApp,
-  updateApp
+  updateApp,
+  gitAllDoctors
 } = require("../controllers/appointment");
 const { authentication } = require("../middlewares/authentication");
 
@@ -18,6 +19,7 @@ appointmentsRouter.put("/acc/:appointments_id", authentication, acceptApp);
 appointmentsRouter.put("/rej/:appointments_id", authentication, rejectApp);
 appointmentsRouter.get("/pat", authentication, getAppByPat);
 appointmentsRouter.get("/doc", authentication, getAppBydoc);
+appointmentsRouter.get("/doctors",  gitAllDoctors);
 appointmentsRouter.post("/search", SearchDoctor);
 appointmentsRouter.delete("/:appointments_id", authentication,deletApp);
 appointmentsRouter.put("/:appointments_id", authentication,updateApp);

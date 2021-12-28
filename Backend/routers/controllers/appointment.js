@@ -3,6 +3,23 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+const gitAllDoctors = (req,res)=>{
+  const query = `SELECT *  FROM doctors WHERE doctors.is_Available=${1}`;
+  appointment.query(query , (err,result)=>{
+    if (err){
+      return res.status(500).json({
+        success: false,
+        message: `server error`,
+      });
+    }
+    return res.status(202).json({
+      success: true,
+      message: `All doctors`,
+      result: result,
+    });
+  })
+  
+}
 const createAppointments = (req, res) => {
   let patient_id = req.token.patient_id;
   const { start_Datee, end_Date, doctor_id } = req.body;
@@ -42,7 +59,6 @@ const acceptApp = (req, res) => {
 
       appointment.query(query, data, (err, result) => {
         if (err) {
-          console.log(err);
           return res.status(500).json({
             success: false,
             message: `server error`,
@@ -286,4 +302,5 @@ module.exports = {
   SearchDoctor,
   deletApp,
   updateApp,
+  gitAllDoctors
 };
