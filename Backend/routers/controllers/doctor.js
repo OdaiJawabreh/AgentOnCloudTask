@@ -11,17 +11,18 @@ const createNewDoctor = async (req, res) => {
     img,
     Doctor_Scout,
     descriptionn,
-    address
+    address,
+    major
   } = req.body;
   pass = await bcrypt.hash(pass, 10);
   email = email.toLowerCase();
   const query = `INSERT INTO doctors
-    (firstName,lastName,email,pass,mobile,img,Doctor_Scout,descriptionn,address)
+    (firstName,lastName,email,pass,mobile,img,Doctor_Scout,descriptionn,address,major)
     VALUES(?,?,?,?,?,?,?,?,?)`;
-  data = [firstName, lastName, email, pass , mobile ,img,Doctor_Scout,descriptionn,address];
+  data = [firstName, lastName, email, pass , mobile ,img,Doctor_Scout,descriptionn,address,major];
 
   doctor.query(query, data, (err, result) => {
-   
+   console.log(err);
     if (result) {
       res.status(201).json({
         success: true,

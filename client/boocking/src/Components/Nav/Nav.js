@@ -27,6 +27,7 @@ function Nav() {
   }
   
   const submitSearch = async () => {
+    console.log("im here");
   const data = {
     firstName,
     mobile,
@@ -37,7 +38,7 @@ function Nav() {
   .then((res)=>{
     dispatch(setSearches(res.data.result));
     if (location.pathname !== "/searchResul") {
-      history("/searchResul");
+      history("/searchResult");
     }
   })
   .catch((err)=>{

@@ -15,6 +15,7 @@ function SignUpDoct() {
   const [descriptionn, setDescriptionn] = useState("");
   const [address, setAddress] = useState("");
   const [Doctor_Scout, setDoctor_Scout] = useState("");
+  const [major, setMajor] = useState("");
 
   const signUp =  (e)=> {
     e.preventDefault();
@@ -134,6 +135,16 @@ function SignUpDoct() {
                 placeholder="Scout"
                 onChange={(e) => {
                   setDoctor_Scout(e.target.value);
+                }}
+              />{" "}
+            </div>
+            <div>
+              {" "}
+              <input
+                type="text"
+                placeholder="major"
+                onChange={(e) => {
+                  setMajor(e.target.value);
                 }}
               />{" "}
             </div>

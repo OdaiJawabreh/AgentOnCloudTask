@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS doctors (
     mobile VARCHAR(45),
     img VARCHAR(255),
     Doctor_Scout INT NOT NULL,
+    major VARCHAR(45) NOT Null ,
     is_Available TINYINT DEFAULT 1,
     descriptionn VARCHAR(255) ,
     address VARCHAR(255) ,
