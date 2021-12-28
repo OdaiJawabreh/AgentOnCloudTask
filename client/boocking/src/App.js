@@ -1,10 +1,12 @@
 import React, { createContext, useState } from "react";
 import SignSelect from "./Components/SignSelect/SignSelect";
+import LoginSelect from "./Components/LoginSelect/LoginSelect";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SignUpDoct from "./Components/Auth/SignupDoctor/SignUpDoct";
 import LoginDoctor from "./Components/Auth/Login/LoginDoctor";
 import LoginPat from "./Components/Auth/Login/LoginPat";
 import SignUpPat from "./Components/Auth/SignupPataint/SignUpPat";
+import Nav from "./Components/Nav/Nav";
 export const tokenContext = createContext();
 
 function App() {
@@ -14,8 +16,10 @@ function App() {
     <div>
       <tokenContext.Provider value={state}>
       <Router>
+        <Nav/>
         <Routes>
           <Route exact path="/signselect" element={<SignSelect />} />
+          <Route exact path="/LoginSelect" element={<LoginSelect />} />
           <Route exact path="/doctor" element={<SignUpDoct />} />
           <Route exact path="/pat" element={<SignUpPat />} />
           <Route exact path="/loginDoctor" element={<LoginDoctor />} />

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function LoginPat() {
+  const [message , setMessage] = useState("")
     const history = useNavigate()
   const state = useContext(tokenContext);
 console.log(state);
@@ -22,8 +23,9 @@ console.log(state);
     localStorage.setItem("token", result.data.token);
        state.setToken(result.data.token)
        history("/")
+   }).catch((err)=>{
+    setMessage("Plese check youre email")
    })
-    
   }
   return (
     <div className="">
@@ -55,6 +57,7 @@ console.log(state);
           Login
         </button>
       </form>
+      {message}
     </div>
   );
 }

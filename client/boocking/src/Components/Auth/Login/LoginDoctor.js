@@ -5,6 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function LoginDoctor() {
+  const [message , setMessage] = useState("")
+
   const history = useNavigate();
   const state = useContext(tokenContext);
   console.log(state);
@@ -21,7 +23,9 @@ function LoginDoctor() {
       localStorage.setItem("token", result.data.token);
       state.setToken(result.data.token);
       history("/");
-    });
+    }).catch((err)=>{
+      setMessage("Plese check youre email")
+     })
   }
   return (
     <div className="">
@@ -53,6 +57,7 @@ function LoginDoctor() {
           Login
         </button>
       </form>
+      {message}
     </div>
   );
 }
