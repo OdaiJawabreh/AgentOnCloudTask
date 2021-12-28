@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, {  useState } from "react";
 import SignSelect from "./Components/SignSelect/SignSelect";
 import LoginSelect from "./Components/LoginSelect/LoginSelect";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -7,15 +7,14 @@ import LoginDoctor from "./Components/Auth/Login/LoginDoctor";
 import LoginPat from "./Components/Auth/Login/LoginPat";
 import SignUpPat from "./Components/Auth/SignupPataint/SignUpPat";
 import Nav from "./Components/Nav/Nav";
-export const tokenContext = createContext();
+import SearchResult from "./Components/SearchResulr/SearchResult";
 
 function App() {
-  const [token, setToken] = useState();
-  const state = { token, setToken };
+ 
   return (
     <div>
-      <tokenContext.Provider value={state}>
-      <Router>
+      
+     
         <Nav/>
         <Routes>
           <Route exact path="/signselect" element={<SignSelect />} />
@@ -24,9 +23,10 @@ function App() {
           <Route exact path="/pat" element={<SignUpPat />} />
           <Route exact path="/loginDoctor" element={<LoginDoctor />} />
           <Route exact path="/LoginPat" element={<LoginPat />} />
+          <Route exact path="/searchResult" element={<SearchResult />} />
         </Routes>
-      </Router>
-      </tokenContext.Provider >
+      
+    
     </div>
   );
 }

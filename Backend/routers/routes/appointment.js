@@ -18,7 +18,7 @@ appointmentsRouter.put("/acc/:appointments_id", authentication, acceptApp);
 appointmentsRouter.put("/rej/:appointments_id", authentication, rejectApp);
 appointmentsRouter.get("/pat", authentication, getAppByPat);
 appointmentsRouter.get("/doc", authentication, getAppBydoc);
-appointmentsRouter.get("/search", SearchDoctor);
+appointmentsRouter.post("/search", SearchDoctor);
 appointmentsRouter.delete("/:appointments_id", authentication,deletApp);
 appointmentsRouter.put("/:appointments_id", authentication,updateApp);
 

@@ -1,14 +1,14 @@
-import React , {useState ,useContext}from "react";
+import React , {useState }from "react";
 import "./login.css";
-import { tokenContext } from "../../../App";
+import jwt from "jwt-decode";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function LoginPat() {
   const [message , setMessage] = useState("")
     const history = useNavigate()
-  const state = useContext(tokenContext);
-console.log(state);
+
     const [pass,setPass] = useState("")
     const [email,setEmail] = useState("")
   function login(e) {
@@ -20,11 +20,12 @@ console.log(state);
    axios
    .post("http://localhost:5000/login/patient",data)
    .then((result)=>{
-    localStorage.setItem("token", result.data.token);
-       state.setToken(result.data.token)
+     let user = jwt(result.data.token)
+    localStorage.setItem("token", JSON.stringify(user));
        history("/")
    }).catch((err)=>{
-    setMessage("Plese check youre email")
+     console.log(err);
+    setMessage("please check your email and password")
    })
   }
   return (

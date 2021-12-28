@@ -1,6 +1,6 @@
-import React , {useState ,useContext}from "react";
+import React , {useState}from "react";
 import "./login.css";
-import { tokenContext } from "../../../App";
+import jwt from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -8,8 +8,7 @@ function LoginDoctor() {
   const [message , setMessage] = useState("")
 
   const history = useNavigate();
-  const state = useContext(tokenContext);
-  console.log(state);
+  
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
   function login(e) {
@@ -20,11 +19,11 @@ function LoginDoctor() {
     };
     console.log(data);
     axios.post("http://localhost:5000/login/doctor", data).then((result) => {
-      localStorage.setItem("token", result.data.token);
-      state.setToken(result.data.token);
+      let user = jwt(result.data.token)
+      localStorage.setItem("token", JSON.stringify(user));
       history("/");
     }).catch((err)=>{
-      setMessage("Plese check youre email")
+      setMessage("Plese check your email ")
      })
   }
   return (
