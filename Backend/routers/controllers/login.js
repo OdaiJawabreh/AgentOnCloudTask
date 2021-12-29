@@ -56,6 +56,7 @@ const loginDoc= async (req, res) => {
     const data = [email]
     connection.query(query,data,async(err,result)=>{
       
+
         if(!result.length){
           return res.status(404).json({
               success: false,

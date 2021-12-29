@@ -38,9 +38,9 @@ function MyAppointment() {
     getAllAppts();
   }, []);
   return (
-    <div style={{ padding: "45px" }}>
+    <div style={{ paddingTop: "45px" }} className="container">
+      <div>
       {appts ? (
-        <div>
           <Table striped bordered hover size="sm">
             <thead>
               <tr>
@@ -123,10 +123,10 @@ function MyAppointment() {
               })}
             </tbody>
           </Table>
-        </div>
       ) : (
         <div>{message}</div>
-      )}
+        )}
+        </div>
     </div>
   );
 }

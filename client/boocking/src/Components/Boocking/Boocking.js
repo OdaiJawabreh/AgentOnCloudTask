@@ -3,15 +3,15 @@ import { useParams } from "react-router";
 import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-
+import "./boocking.css"
+import Button from "react-bootstrap/esm/Button";
 function Boocking() {
   const history = useNavigate();
   // const [value,setValue] = useState(false)
-  let token = ""
+  let token = "";
 
-  
   useEffect(() => {
-    token = JSON.parse(localStorage.getItem("token"))
+    token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
       swal("Please Login Fierst").then((value) => {
         value && history("/LoginSelect");
@@ -44,29 +44,37 @@ function Boocking() {
       });
   }
   return (
-    <div>
-      <label htmlFor="birthdaytime">boocking from</label>
-      <input
-        type="datetime-local"
-        id="birthdaytime"
-        name="birthdaytime"
-        onChange={(e) => {
-          setStart_Datee(e.target.value);
-        }}
-      />
-      <label htmlFor="birthdaytime">boocking to</label>
-      <input
-        type="datetime-local"
-        id="birthdaytime"
-        name="birthdaytime"
-        onChange={(e) => {
-          setEnd_Date(e.target.value);
-        }}
-      />
-      <div>
-        <button onClick={postBoocking}>Submit</button>
+    
+    <div className="Boocking">
+      <div className="child">
+        <div >
+        <label htmlFor="boocking Time">Boocking From</label>
+        <input
+          type="datetime-local"
+          id="birthdaytime"
+          name="birthdaytime"
+          onChange={(e) => {
+            setStart_Datee(e.target.value);
+          }}
+        />
+        </div>
+        <div className="date">
+        <label htmlFor="boocking Time">Boocking To</label>
+        <input
+          type="datetime-local"
+          id="birthdaytime"
+          name="birthdaytime"
+          onChange={(e) => {
+            setEnd_Date(e.target.value);
+          }}
+        />
+        </div>
+        <div>
+          <Button  variant="outline-success" onClick={postBoocking}>Submit</Button>
+        </div>
       </div>
     </div>
+   
   );
 }
 

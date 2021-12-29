@@ -1,0 +1,24 @@
+.Boocking{
+    position: relative;
+    margin-top: 10px;
+    background-color: #ced4da
+}
+
+.child {
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 5px;
+  position: fixed;
+  left: 50%;
+  width: 400px;
+  height: 130px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.child Button{
+margin-left: 150px;
+margin-top: 10px;
+}
+.date{
+    margin-top: 10px;
+}

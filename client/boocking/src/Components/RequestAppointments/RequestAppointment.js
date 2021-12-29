@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./main.css";
 import axios from "axios";
 import { Table } from "react-bootstrap";
 import { FcApproval } from "react-icons/fc";
 import { GiCancel } from "react-icons/gi";
-import swal from "sweetalert";
+import swal from "sweetalert"
 function RequestAppointment() {
   const hashToken = localStorage.getItem("token1");
-  const [state, setState] = useState("");
   const [appts, setAppts] = useState("");
   const [message, setMessage] = useState("");
-
+ 
   function getAppts() {
     axios
       .get("http://localhost:5000/app/doc", {
@@ -21,14 +19,16 @@ function RequestAppointment() {
       });
   }
   function acceptBoocking(id) {
-    axios.put(`http://localhost:5000/app/acc/${id}`).then((result) => {
-      setAppts(
-        appts.filter((elem) => {
-          return elem.appointments_id !== id;
-        })
-      );
-      swal("Good job!", "The Boocking now Approved", "success");
-    });
+    axios
+      .put(`http://localhost:5000/app/acc/${id}`)
+      .then((result) => {
+        setAppts(
+          appts.filter((elem) => {
+            return elem.appointments_id !== id;
+          })
+        );
+        swal("Good job!", "The Boocking now Approved", "success");
+      });
   }
   function rejectBoocking(id) {
     axios
@@ -41,7 +41,7 @@ function RequestAppointment() {
             return elem.appointments_id !== id;
           })
         );
-
+      
         swal("Good job!", "The Boocking now rejected", "success");
       });
   }
@@ -50,7 +50,8 @@ function RequestAppointment() {
     getAppts();
   }, [localStorage.getItem("token")]);
   return (
-    <div style={{ padding: "45px" }}>
+    <div>
+      <div style={{ paddingTop: "45px" }} className="container" >
       {appts ? (
         <div>
           <Table striped bordered hover size="sm">
@@ -112,10 +113,11 @@ function RequestAppointment() {
               })}
             </tbody>
           </Table>
-        </div>
+          </div>
       ) : (
         <div>{message}</div>
-      )}
+        )}
+        </div>
     </div>
   );
 }

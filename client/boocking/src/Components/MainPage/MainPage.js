@@ -17,8 +17,8 @@ export default function MainPage() {
   useEffect(() => {
     gitAllDoctors()
 }, [])
-  return <div>
-       <div className="container">
+  return (
+       <div className="container" style={{ paddingTop: "45px" }} >
       <Row xs={1} md={3} className="g-4">
         {doctors.length &&
           doctors.map((elem) => {
@@ -34,11 +34,11 @@ export default function MainPage() {
                         <span>Scout:{elem.Doctor_Scout}JD</span>
                       </div>
                       <Card.Title style={{ fontSize: "20px" }}>{elem.major} Doctor</Card.Title>
-                      <Card.Title style={{ fontSize: "15px" }}>{elem.descriptionn} </Card.Title>
+                      <Card.Title style={{ fontSize: "12px" }}>{elem.descriptionn} </Card.Title>
                       <Card.Title style={{ fontSize: "15px" }}>Address: {elem.address} </Card.Title>
                       <Card.Title style={{ fontSize: "15px"  }}><FiPhoneCall style={{ fontSize: "15px" , color:"green"}}></FiPhoneCall> {elem.mobile}</Card.Title>
 
-                      <Button onClick={()=>{ history(`/boocking/${elem.doctor_id}`)}}   >Boocking Now</Button>
+                      <Button variant="outline-success" onClick={()=>{ history(`/boocking/${elem.doctor_id}`)}}   >Boocking Now</Button>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -47,5 +47,5 @@ export default function MainPage() {
           })}
       </Row>
       </div>
-      </div>;
+  )
 }

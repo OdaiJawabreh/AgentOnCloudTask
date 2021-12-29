@@ -20,8 +20,8 @@ function SubimtedAppts() {
     setMessage("you dont have any appointments till now");
     getAppts();
   }, [localStorage.getItem("token")]);
-  return <div>
-<div style={{ padding: "45px" }}>
+  return <div style={{ paddingTop: "45px" }} className="container">
+<div >
       {appts ? (
         <div>
           <Table striped bordered hover size="sm">

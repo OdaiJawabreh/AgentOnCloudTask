@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./doctor.css";
 import { storage } from "../../Firbase/Firebase";
 import axios from "axios";
-import { useNavigate  } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import "../Login/login.css";
+import { Button } from "react-bootstrap";
 function SignUpDoct() {
-  const history = useNavigate()
+  const history = useNavigate();
   const [img, setImg] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -16,8 +17,7 @@ function SignUpDoct() {
   const [address, setAddress] = useState("");
   const [Doctor_Scout, setDoctor_Scout] = useState("");
   const [major, setMajor] = useState("");
-
-  const signUp =  (e)=> {
+  const signUp = (e) => {
     e.preventDefault();
     const data = {
       firstName,
@@ -29,13 +29,13 @@ function SignUpDoct() {
       Doctor_Scout,
       descriptionn,
       address,
+      major,
     };
-    axios
-    .post("http://localhost:5000/signDoc", data )
-    .then((result)=>{
-      history("/LoginDoctor")
-    })
-  }
+    console.log(data);
+    axios.post("http://localhost:5000/signDoc", data).then((result) => {
+      history("/LoginDoctor");
+    });
+  };
   const addMainIm = (e) => {
     if (e.target.files[0]) {
       let doctorImg = e.target.files[0];
@@ -59,133 +59,102 @@ function SignUpDoct() {
     }
   };
   return (
-    <div className="container">
-      <div>
-        <div>
-          <h2>Sign up</h2>
-          <form onSubmit={signUp}>
-            <div>
-              <span>Add main Img </span>
-              <br></br>
-              <input
-                placeholder="Main Img"
-                type="file"
-                className="form-control "
-                title="addMainIm"
-                id="main"
-                onChange={addMainIm}
-              />
-              <div>
-                {" "}
-                <input
-                  type="text"
-                  placeholder="First name"
-                  onChange={(e) => {
-                    setFirstName(e.target.value);
-                  }}
-                />{" "}
-              </div>
-              <div>
-                {" "}
-                <input
-                  type="text"
-                  placeholder="Last name"
-                  onChange={(e) => {
-                    setLastName(e.target.value);
-                  }}
-                />{" "}
-              </div>
-            </div>
-
-            <div>
-              {" "}
-              <input
-                type="text"
-                placeholder="Phone"
-                onChange={(e) => {
-                  setMobile(e.target.value);
-                }}
-              />{" "}
-            </div>
-            <div>
-              {" "}
-              <input
-                type="email"
-                placeholder="doctor@gmail.com"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />{" "}
-            </div>
-
-            <div>
-              {" "}
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={(e) => {
-                  setPass(e.target.value);
-                }}
-              />{" "}
-            </div>
-            <div>
-              {" "}
-              <input
-                type="password"
-                placeholder="Scout"
-                onChange={(e) => {
-                  setDoctor_Scout(e.target.value);
-                }}
-              />{" "}
-            </div>
-            <div>
-              {" "}
-              <input
-                type="text"
-                placeholder="major"
-                onChange={(e) => {
-                  setMajor(e.target.value);
-                }}
-              />{" "}
-            </div>
-            <div>
-              <textarea
-                id="formGroupExampleInput"
-                placeholder="Choose discription"
-                onChange={(e) => {
-                  setDescriptionn(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <textarea
-                id="formGroupExampleInput2"
-                placeholder="Enter youre Address"
-                onChange={(e) => {
-                  setAddress(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <div>
-                {" "}
-                <button type="submit">
-                  <span>Create account</span>
-                </button>{" "}
-              </div>
-              <div>
-                <p>
-                  Already have an account?
-                  <br />
-                  <a href="#">Sign in</a>
-                </p>
-              </div>
-            </div>
-          </form>
-        </div>
+    <center>
+      <div class="wrapper">
+        <form class="form-signin" onSubmit={signUp}>
+          <h2 class="form-signin-heading">Sign Up</h2>
+          <input
+            placeholder="Main Img"
+            type="file"
+            className="form-control "
+            title="addMainIm"
+            id="main"
+            onChange={addMainIm}
+          />
+          <input
+            type="text"
+            placeholder="First name"
+            className="form-control "
+            onChange={(e) => {
+              setFirstName(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            className="form-control "
+            placeholder="Last name"
+            onChange={(e) => {
+              setLastName(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            className="form-control "
+            placeholder="Phone"
+            onChange={(e) => {
+              setMobile(e.target.value);
+            }}
+          />
+          <input
+            type="email"
+            className="form-control "
+            placeholder="doctor@gmail.com"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+          <input
+            type="password"
+            className="form-control "
+            placeholder="Password"
+            onChange={(e) => {
+              setPass(e.target.value);
+            }}
+          />
+          <input
+            type="password"
+            className="form-control "
+            placeholder="Scout"
+            onChange={(e) => {
+              setDoctor_Scout(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            className="form-control "
+            placeholder="major"
+            onChange={(e) => {
+              setMajor(e.target.value);
+            }}
+          />
+          <textarea
+            id="formGroupExampleInput"
+            placeholder="Choose discription"
+            className="form-control "
+            onChange={(e) => {
+              setDescriptionn(e.target.value);
+            }}
+          />
+          <textarea
+            className="form-control "
+            id="formGroupExampleInput2"
+            placeholder="Enter youre Address"
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
+          />
+          <Button
+            class="btn btn-lg btn-primary btn-block"
+            type="submit"
+            variant="outline-success"
+          >
+            Create account
+          </Button>
+        </form>
       </div>
-    </div>
+    </center>
   );
 }
 
 export default SignUpDoct;
+

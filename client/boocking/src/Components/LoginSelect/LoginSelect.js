@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Form from "react-bootstrap/Form";
 
+import { Container, Form } from "react-bootstrap";
 function LoginSelect() {
   const history = useNavigate();
   const handleChange = (e) => {
-    console.log(e.target.value);
     if (e.target.value === "doctor") {
       history("/loginDoctor");
     } else {
@@ -13,25 +12,16 @@ function LoginSelect() {
     }
   };
   return (
-    <div>
-      <Form.Group className="mb-3">
-        <Form.Label>Select One</Form.Label>
-      </Form.Group>
-
-      <Form.Group className="mb-3">
-        <Form.Check
-          type="checkbox"
-          label="Doctor"
-          value={"doctor"}
-          onChange={(e) => handleChange(e)}
-        />
-        <Form.Check
-          type="checkbox"
-          label="patient"
-          value={"patient"}
-          onChange={(e) => handleChange(e)}
-        />
-      </Form.Group>
+    <div style={{ paddingTop: "45px" }} className="container">
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        onChange={(e) => handleChange(e)}
+      >
+        <option selected>Select One </option>
+        <option value="doctor">Doctor</option>
+        <option value="2">Patient</option>
+      </select>
     </div>
   );
 }
