@@ -49,7 +49,7 @@ function RequestAppointment() {
           })
         );
       
-        swal("Good job!", "The Boocking now rejected", "success");
+        swal("Good job!", "The Boocking now Rejected", "success");
       });
   }
   useEffect(() => {

@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useLocation } from "react-router";
-import { setSearches } from "../../actions/search";
 import { Button, Navbar, Container, Form, FormControl } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { setSearches } from "../../actions/search";
 function Nav() {
   const dispatch = useDispatch();
   const location = useLocation();

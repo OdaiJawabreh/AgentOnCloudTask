@@ -24,6 +24,6 @@ appointmentsRouter.get("/sub/doc", authentication, getSubmitedApp);
 appointmentsRouter.get("/doctors",  gitAllDoctors);
 appointmentsRouter.post("/search", SearchDoctor);
 appointmentsRouter.delete("/:appointments_id", authentication,deletApp);
-appointmentsRouter.put("/:appointments_id", authentication,updateApp);
+appointmentsRouter.put("/:appointments_id", updateApp);
 
 module.exports = appointmentsRouter;

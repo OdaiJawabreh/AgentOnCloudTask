@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import axios from "axios";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { AiTwotoneEdit } from "react-icons/ai";
+import swal from "sweetalert"
+import { useNavigate } from "react-router-dom";
 
 function MyAppointment() {
+  const history = useNavigate()
   const hashToken = localStorage.getItem("token1");
   const [appts, setAppts] = useState("");
   const [message, setMessage] = useState("");
@@ -30,6 +34,7 @@ function MyAppointment() {
         );
       });
   }
+ 
   useEffect(() => {
     setMessage("you dont have any appointments till now");
     getAllAppts();
@@ -49,6 +54,7 @@ function MyAppointment() {
                 <th style={{ textAlign: "center" }}>Address</th>
                 <th style={{ textAlign: "center" }}>Mobile Number</th>
                 <th style={{ textAlign: "center" }}>Status</th>
+                <th style={{ textAlign: "center" }}>Action</th>
                 <th style={{ textAlign: "center" }}>Action</th>
               </tr>
             </thead>
@@ -88,9 +94,27 @@ function MyAppointment() {
                               cursor: "pointer",
                             }}
                             onClick={() => {
+
                               deleteApp(elem.appointments_id);
                             }}
                           ></RiDeleteBin6Line>
+                        ) : (
+                          ""
+                        )}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {elem.statuss === 0 ? (
+                          <AiTwotoneEdit
+                            style={{
+                              color: "green",
+                              fontSize: "20px",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              history(`/MyAppointment3/boockings/${elem.appointments_id}`)
+                             
+                            }}
+                          ></AiTwotoneEdit>
                         ) : (
                           ""
                         )}

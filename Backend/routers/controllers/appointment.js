@@ -271,8 +271,10 @@ const deletApp = (req, res) => {
 
 const updateApp = (req, res) => {
   const appointments_id = Number(req.params.appointments_id);
+  console.log(appointments_id,"odai");
   const {start_Datee, end_Date} = req.body;
   let data = [start_Datee, end_Date];
+  console.log(data,"data");
   const query = `SELECT *  FROM appointments WHERE appointments_id=${appointments_id}`;
   appointment.query(query,(err,result)=>{
       console.log(result);
