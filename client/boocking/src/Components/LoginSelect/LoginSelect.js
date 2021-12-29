@@ -6,7 +6,7 @@ function LoginSelect() {
   const history = useNavigate();
   const handleChange = (e) => {
     console.log(e.target.value);
-    if (e.target.value == "doctor") {
+    if (e.target.value === "doctor") {
       history("/loginDoctor");
     } else {
       history("/LoginPat");

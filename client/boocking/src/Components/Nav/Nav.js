@@ -35,9 +35,7 @@ function Nav() {
           history("/searchResult");
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      
   };
 
   function logout() {

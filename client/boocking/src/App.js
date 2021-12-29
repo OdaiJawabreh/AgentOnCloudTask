@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React from "react";
 import SignSelect from "./Components/SignSelect/SignSelect";
 import LoginSelect from "./Components/LoginSelect/LoginSelect";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -10,7 +10,6 @@ import SignUpPat from "./Components/Auth/SignupPataint/SignUpPat";
 import Nav from "./Components/Nav/Nav";
 import SearchResult from "./Components/SearchResulr/SearchResult";
 import Boocking from "./Components/Boocking/Boocking";
-import MainPage from "./Components/MainPage/MainPage";
 import MyAppointment from "./Components/MyAppointment/MyAppointment";
 import RequestAppointment from "./Components/DoctorMain/RequestAppointment";
 import SubimtedAppts from "./SubimtedAppts/SubimtedAppts";

@@ -1,6 +1,5 @@
 const patient = require("../../db/db");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const createNewPatient = async (req, res) => {
  

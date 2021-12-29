@@ -19,12 +19,10 @@ function RequestAppointment() {
         headers: { Authorization: `Bearer ${hashToken}` },
       })
       .then((result) => {
-        console.log(result.data.result);
         setAppts(result.data.result);
       });
   }
   function acceptBoocking(id) {
-    console.log(typeof id);
     axios
       .put(`http://localhost:5000/app/acc/${id}`)
       .then((result) => {
@@ -37,7 +35,6 @@ function RequestAppointment() {
       });
   }
   function rejectBoocking(id) {
-    console.log(typeof id);
     axios
       .put(`http://localhost:5000/app/rej/${id}`, {
         headers: { Authorization: `Bearer ${hashToken}` },

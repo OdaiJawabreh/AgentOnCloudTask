@@ -22,7 +22,6 @@ const createNewDoctor = async (req, res) => {
   data = [firstName, lastName, email, pass , mobile ,img,Doctor_Scout,descriptionn,address,major];
 
   doctor.query(query, data, (err, result) => {
-   console.log(err);
     if (result) {
       res.status(201).json({
         success: true,

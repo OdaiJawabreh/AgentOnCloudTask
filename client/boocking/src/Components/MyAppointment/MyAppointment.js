@@ -3,11 +3,10 @@ import { Table } from "react-bootstrap";
 import axios from "axios";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiTwotoneEdit } from "react-icons/ai";
-import swal from "sweetalert"
 import { useNavigate } from "react-router-dom";
 
 function MyAppointment() {
-  const history = useNavigate()
+  const history = useNavigate();
   const hashToken = localStorage.getItem("token1");
   const [appts, setAppts] = useState("");
   const [message, setMessage] = useState("");
@@ -17,7 +16,6 @@ function MyAppointment() {
         headers: { Authorization: `Bearer ${hashToken}` },
       })
       .then((result) => {
-       
         setAppts(result.data.result);
       });
   }
@@ -34,7 +32,7 @@ function MyAppointment() {
         );
       });
   }
- 
+
   useEffect(() => {
     setMessage("you dont have any appointments till now");
     getAllAppts();
@@ -94,7 +92,6 @@ function MyAppointment() {
                               cursor: "pointer",
                             }}
                             onClick={() => {
-
                               deleteApp(elem.appointments_id);
                             }}
                           ></RiDeleteBin6Line>
@@ -111,8 +108,9 @@ function MyAppointment() {
                               cursor: "pointer",
                             }}
                             onClick={() => {
-                              history(`/MyAppointment3/boockings/${elem.appointments_id}`)
-                             
+                              history(
+                                `/MyAppointment3/boockings/${elem.appointments_id}`
+                              );
                             }}
                           ></AiTwotoneEdit>
                         ) : (

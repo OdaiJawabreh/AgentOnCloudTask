@@ -34,7 +34,7 @@ function SignUpDoct() {
     .post("http://localhost:5000/signDoc", data )
     .then((result)=>{
       history("/LoginDoctor")
-    }).catch(err=>console.log(err))
+    })
   }
   const addMainIm = (e) => {
     if (e.target.files[0]) {

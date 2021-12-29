@@ -13,7 +13,6 @@ function EditAppt() {
     token = JSON.parse(localStorage.getItem("token"));
     if (!token) {
       swal("Please Login Fierst").then((value) => {
-        console.log(value, "value");
         value && history("/LoginSelect");
       });
     }
@@ -25,12 +24,10 @@ function EditAppt() {
   const [end_Date, setEnd_Date] = useState();
 
   function editBoocking() {
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
     let data = {
       start_Datee,
       end_Date,
     };
-    console.log(data);
     axios
       .put(`http://localhost:5000/app/${appointments_id}`, data ,{
         headers: { Authorization: `Bearer ${hashToken}` },

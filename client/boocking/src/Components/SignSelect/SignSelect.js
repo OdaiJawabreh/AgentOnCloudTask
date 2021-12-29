@@ -4,8 +4,7 @@ import Form from "react-bootstrap/Form";
 function SignSelect() {
   const history = useNavigate();
   const handleChange = (e) => {
-      console.log(e.target.value );
-    if (e.target.value == "doctor") {
+    if (e.target.value === "doctor") {
       history("/doctor");
     } else {
       history("/pat");

@@ -14,7 +14,6 @@ function Boocking() {
     token = JSON.parse(localStorage.getItem("token"))
     if (!token) {
       swal("Please Login Fierst").then((value) => {
-        console.log(value, "value");
         value && history("/LoginSelect");
       });
     }
@@ -25,7 +24,6 @@ function Boocking() {
   let doctor_id = Number(useParams().id);
   const [start_Datee, setStart_Datee] = useState();
   const [end_Date, setEnd_Date] = useState();
-  console.log(hashToken);
   function postBoocking() {
     let data = {
       patient_id,

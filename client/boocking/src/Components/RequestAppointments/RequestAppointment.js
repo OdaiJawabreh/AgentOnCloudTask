@@ -4,40 +4,33 @@ import axios from "axios";
 import { Table } from "react-bootstrap";
 import { FcApproval } from "react-icons/fc";
 import { GiCancel } from "react-icons/gi";
-import swal from "sweetalert"
+import swal from "sweetalert";
 function RequestAppointment() {
   const hashToken = localStorage.getItem("token1");
   const [state, setState] = useState("");
   const [appts, setAppts] = useState("");
   const [message, setMessage] = useState("");
-  function getToken() {
-    setState(JSON.parse(localStorage.getItem("token")));
-  }
+
   function getAppts() {
     axios
       .get("http://localhost:5000/app/doc", {
         headers: { Authorization: `Bearer ${hashToken}` },
       })
       .then((result) => {
-        console.log(result.data.result);
         setAppts(result.data.result);
       });
   }
   function acceptBoocking(id) {
-    console.log(typeof id);
-    axios
-      .put(`http://localhost:5000/app/acc/${id}`)
-      .then((result) => {
-        setAppts(
-          appts.filter((elem) => {
-            return elem.appointments_id !== id;
-          })
-        );
-        swal("Good job!", "The Boocking now Approved", "success");
-      });
+    axios.put(`http://localhost:5000/app/acc/${id}`).then((result) => {
+      setAppts(
+        appts.filter((elem) => {
+          return elem.appointments_id !== id;
+        })
+      );
+      swal("Good job!", "The Boocking now Approved", "success");
+    });
   }
   function rejectBoocking(id) {
-    console.log(typeof id);
     axios
       .put(`http://localhost:5000/app/rej/${id}`, {
         headers: { Authorization: `Bearer ${hashToken}` },
@@ -48,13 +41,12 @@ function RequestAppointment() {
             return elem.appointments_id !== id;
           })
         );
-      
+
         swal("Good job!", "The Boocking now rejected", "success");
       });
   }
   useEffect(() => {
     setMessage("you dont have any appointments till now");
-    getToken();
     getAppts();
   }, [localStorage.getItem("token")]);
   return (

@@ -26,7 +26,6 @@ function LoginPat() {
 
        history("/")
    }).catch((err)=>{
-     console.log(err);
     setMessage("please check your email and password")
    })
   }
