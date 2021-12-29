@@ -26,9 +26,7 @@ function RequestAppointment() {
   function acceptBoocking(id) {
     console.log(typeof id);
     axios
-      .put(`http://localhost:5000/app/acc/${id}`, {
-        headers: { Authorization: `Bearer ${hashToken}` },
-      })
+      .put(`http://localhost:5000/app/acc/${id}`)
       .then((result) => {
         setAppts(
           appts.filter((elem) => {
@@ -50,8 +48,7 @@ function RequestAppointment() {
             return elem.appointments_id !== id;
           })
         );
-        let x = new Date().toISOString();
-        console.log(x);
+      
         swal("Good job!", "The Boocking now rejected", "success");
       });
   }

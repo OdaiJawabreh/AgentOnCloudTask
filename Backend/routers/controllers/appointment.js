@@ -184,6 +184,32 @@ const getAppBydoc = (req, res) => {
     });
   });
 };
+const getSubmitedApp = (req, res) => {
+  let doctor_id = req.token.doctor_id;
+  console.log(doctor_id);
+  const query = `SELECT * from appointments INNER JOIN patients ON appointments.patient_id=patients.patient_id
+  WHERE appointments.doctor_id=${doctor_id} AND appointments.statuss between 1 And 2`;
+  appointment.query(query, (err, result) => {
+    console.log(err);
+    console.log(result);
+    if (!result.length) {
+      return res.status(500).json({
+        success: false,
+        message: `not found any appointments`,
+      });
+    } else if (err) {
+      return res.status(404).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    }
+    return res.status(201).json({
+      success: true,
+      result: result,
+    });
+  });
+};
 
 const SearchDoctor = (req, res) => {
   const firstName = req.body.name || "";
@@ -304,5 +330,6 @@ module.exports = {
   SearchDoctor,
   deletApp,
   updateApp,
-  gitAllDoctors
+  gitAllDoctors,
+  getSubmitedApp
 };

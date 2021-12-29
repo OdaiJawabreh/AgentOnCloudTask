@@ -44,6 +44,7 @@ function Nav() {
   function logout() {
     localStorage.clear();
     setState("");
+    history("/LoginSelect");
   }
   useEffect(() => {
     getToken();
@@ -120,7 +121,7 @@ function Nav() {
           <div className="MainNav">
             <span>Hi Dr.{state.userName}</span>
 
-            <Link className="nav-item nav-link active" to="/">
+            <Link className="nav-item nav-link active" to="/SubimtedAppts">
               Submited Appointments
             </Link>
             <Link className="nav-item nav-link active" to="/RequestAppointment">
