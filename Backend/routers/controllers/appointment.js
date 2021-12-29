@@ -42,6 +42,7 @@ const createAppointments = (req, res) => {
   });
 };
 const acceptApp = (req, res) => {
+  console.log("im here");
   const appointments_id = Number(req.params.appointments_id);
   const checkQuery = `SELECT *  FROM appointments WHERE appointments_id=?`;
   let data = [appointments_id];
@@ -163,7 +164,7 @@ const getAppBydoc = (req, res) => {
   let doctor_id = req.token.doctor_id;
   console.log(doctor_id);
   const query = `SELECT * from appointments INNER JOIN patients ON appointments.patient_id=patients.patient_id
-       WHERE appointments.doctor_id=${doctor_id}`;
+       WHERE appointments.doctor_id=${doctor_id} AND appointments.statuss=0`;
   appointment.query(query, (err, result) => {
     if (!result.length) {
       return res.status(500).json({

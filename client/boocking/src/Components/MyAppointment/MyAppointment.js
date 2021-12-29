@@ -13,8 +13,7 @@ function MyAppointment() {
         headers: { Authorization: `Bearer ${hashToken}` },
       })
       .then((result) => {
-        console.log(result.data.result);
-        console.log(typeof result.data.result[0].statuss);
+       
         setAppts(result.data.result);
       });
   }

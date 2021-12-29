@@ -12,6 +12,7 @@ import SearchResult from "./Components/SearchResulr/SearchResult";
 import Boocking from "./Components/Boocking/Boocking";
 import MainPage from "./Components/MainPage/MainPage";
 import MyAppointment from "./Components/MyAppointment/MyAppointment";
+import RequestAppointment from "./Components/RequestAppointments/RequestAppointment";
 function App() {
  
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/boocking/:id" element={<Boocking />} />
           <Route exact path="/" element={<MainPage />} />
           <Route exact path="/MyAppointment" element={<MyAppointment />} />
+          <Route exact path="/RequestAppointment" element={<RequestAppointment />} />
         </Routes>
       
     

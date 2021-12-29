@@ -22,7 +22,7 @@ function LoginDoctor() {
       let user = jwt(result.data.token)
       localStorage.setItem("token", JSON.stringify(user));
       localStorage.setItem("token1",result.data.token);
-      history("/");
+      history("/RequestAppointment");
     }).catch((err)=>{
       setMessage("Plese check your email ")
      })

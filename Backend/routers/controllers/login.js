@@ -51,6 +51,7 @@ const loginPat = (req, res) => {
 const loginDoc= async (req, res) => {
     let pass = req.body.pass
     let email = req.body.email.toLowerCase()
+    console.log(req.body);
     const query = "SELECT * FROM doctors WHERE doctors.email=? "
     const data = [email]
     connection.query(query,data,async(err,result)=>{

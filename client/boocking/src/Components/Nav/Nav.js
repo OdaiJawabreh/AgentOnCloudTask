@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useLocation } from "react-router";
 import { setSearches } from "../../actions/search";
-import { Button, Navbar, Container, Form, FormControl  } from "react-bootstrap";
+import { Button, Navbar, Container, Form, FormControl } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -56,49 +56,49 @@ function Nav() {
           <div className="MainNav">
             <Navbar.Brand href="/">SYT</Navbar.Brand>
             <FormControl
-                  type="search"
-                  placeholder="name"
-                  className="me-0.5"
-                  aria-label="Search"
-                  onChange={(e) => {
-                    setFirstName(e.target.value);
-                  }}
-                />
-                <FormControl
-                  type="search"
-                  placeholder="mobile"
-                  className="me-0.5"
-                  aria-label="Search"
-                  onChange={(e) => {
-                    setMobile(e.target.value);
-                  }}
-                />
-                <FormControl
-                  type="search"
-                  placeholder="Scout from"
-                  className="me-0.5"
-                  aria-label="Search"
-                  onChange={(e) => {
-                    setDoctor_Scout_from(e.target.value);
-                  }}
-                />
-                <FormControl
-                  type="search"
-                  placeholder="Scout to"
-                  className="me-0.5"
-                  aria-label="Search"
-                  onChange={(e) => {
-                    setDoctor_Scout_to(e.target.value);
-                  }}
-                />
-                <Button
-                  variant="outline-success"
-                  onClick={() => {
-                    submitSearch();
-                  }}
-                >
-                  Search
-                </Button>
+              type="search"
+              placeholder="name"
+              className="me-0.5"
+              aria-label="Search"
+              onChange={(e) => {
+                setFirstName(e.target.value);
+              }}
+            />
+            <FormControl
+              type="search"
+              placeholder="mobile"
+              className="me-0.5"
+              aria-label="Search"
+              onChange={(e) => {
+                setMobile(e.target.value);
+              }}
+            />
+            <FormControl
+              type="search"
+              placeholder="Scout from"
+              className="me-0.5"
+              aria-label="Search"
+              onChange={(e) => {
+                setDoctor_Scout_from(e.target.value);
+              }}
+            />
+            <FormControl
+              type="search"
+              placeholder="Scout to"
+              className="me-0.5"
+              aria-label="Search"
+              onChange={(e) => {
+                setDoctor_Scout_to(e.target.value);
+              }}
+            />
+            <Button
+              variant="outline-success"
+              onClick={() => {
+                submitSearch();
+              }}
+            >
+              Search
+            </Button>
             <div className="btn-option">
               <button
                 className="btn-signup"
@@ -119,8 +119,13 @@ function Nav() {
         <div className="container">
           <div className="MainNav">
             <span>Hi Dr.{state.userName}</span>
-            <Navbar.Brand href="#">Appointments Today</Navbar.Brand>
-            <Navbar.Brand href="#">Request Appointment</Navbar.Brand>
+
+            <Link className="nav-item nav-link active" to="/">
+              Submited Appointments
+            </Link>
+            <Link className="nav-item nav-link active" to="/RequestAppointment">
+              Request Appointments
+            </Link>
 
             <button
               onClick={() => {
@@ -137,7 +142,7 @@ function Nav() {
             <Container>
               <Form className="d-flex">
                 <Navbar.Brand href="/">SYT</Navbar.Brand>
-                <Link to='/MyAppointment'>MyAppointment</Link>
+                <Link to="/MyAppointment">MyAppointment</Link>
                 {/* <Link to='/MyAppointment'>MyAppointment</Link> */}
                 {/* <Navbar.Brand href="/MyAppointment">MyAppointment</Navbar.Brand> */}
 
