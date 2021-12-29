@@ -14,6 +14,7 @@ import MyAppointment from "./Components/MyAppointment/MyAppointment";
 import RequestAppointment from "./Components/DoctorMain/RequestAppointment";
 import SubimtedAppts from "./SubimtedAppts/SubimtedAppts";
 import EditAppt from "./Components/EditAppt/EditAppt";
+import MainPage from "./Components/MainPage/MainPage";
 function App() {
   return (
     <div>
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/loginDoctor" element={<LoginDoctor />} />
         <Route exact path="/LoginPat" element={<LoginPat />} />
         <Route exact path="/searchResult" element={<SearchResult />} />
+        <Route exact path="/" element={<MainPage />} />
         <Route exact path="/boocking/:id" element={<Boocking />} />
         <Route exact path="/RequestAppointment" element={<RequestAppointment />} />
         <Route exact path="/MyAppointment" element={<MyAppointment />} />
